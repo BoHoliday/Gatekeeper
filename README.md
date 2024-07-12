@@ -3,17 +3,17 @@
 ![Docker Pulls](https://img.shields.io/docker/pulls/yoruio/membarr?color=099cec&style=for-the-badge)
 [![docker-sync](https://github.com/Yoruio/Membarr/actions/workflows/docker-sync.yml/badge.svg)](https://github.com/Yoruio/Membarr/actions/workflows/docker-sync.yml)
 
-Membarr 
+Gatekeeper 
 =================
 
-Membarr is a fork of Invitarr that invites discord users to Plex and Jellyfin. You can also automate this bot to invite discord users to a media server once a certain role is given to a user or the user can also be added manually.  
+Gatekeeper is a fork of Membarr.
 
 ### Features
 
-- Ability to invite users to Plex and Jellyfin from discord 
-- Fully automatic invites using roles 
-- Ability to kick users from plex if they leave the discord server or if their role is taken away.
-- Ability to view the database in discord and to edit it.
+- Ability to invite users to a media server from Discord.
+- Fully automatic invites using role.
+- Ability to remove users from the media server if they leave the Discord server or if their role is taken away.
+- Ability to view the database in Discord and to edit it.
 
 Commands: 
 
@@ -45,17 +45,6 @@ This command is used to remove a record from the Db. Use /membarr dbls to determ
 9. Under Scopes, check 'bot' and applications.commands
 10. Copy the 'Generated URL' and paste into your browser and add it to your discord server from Step 1.
 11. The bot will come online after the docker container is running with the correct Bot Token
-
-
-# Unraid Installation
-> For Manual an Docker setup, see below
-
-1. Ensure you have the Community Applications plugin installed.
-2. Inside the Community Applications app store, search for Membarr.
-3. Click the Install Button.
-4. Add discord bot token.
-5. Click apply
-6. Finish setting up using [Setup Commands](#after-bot-has-started)
 
 # Manual Setup (For Docker, see below)
 
@@ -111,17 +100,6 @@ This command enables the Jellyfin integration (currently only enables auto-add /
 /jellyfinsettings disable
 This command disables the Jellyfin integration (currently only disables auto-add / auto-remove)
 ```
-
-# Migration from Invitarr
-Invitarr does not require the applications.commands scope, so you will need to kick and reinvite your Discord bot to your server, making sure to tick both the "bot" and "applications.commands" scopes in the Oauth URL generator.
-
-Membarr uses a slightly different database table than Invitarr. Membarr will automatically update the Invitarr db table to the current Membarr table format, but the new table will no longer be compatible with Invitarr, so backup your app.db before running Membarr!
-
-# Migration to Invitarr
-As mentioned in [Migration from Invitarr](#Migration-From-Invitarr), Membarr has a slightly different db table than Invitarr. To Switch back to Invitarr, you will have to manually change the table format back. Open app.db in a sqlite cli tool or browser like DB Browser, then remove the "jellyfin_username" column, and make the "email" column non-nullable.
-
-# Contributing
-We appreciate any and all contributions made to the project, whether that be new features, bugfixes, or even fixed typos! If you would like to contribute to the project, simply fork the development branch, make your changes, and open a pull request. *Pull requests that are not based on the development branch will be rejected.*
 
 # Other stuff
 **Enable Intents else bot will not Dm users after they get the role.**
